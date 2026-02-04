@@ -10,7 +10,9 @@ iLovePDF API 的 Python SDK，包含 iLoveAPI 的图片处理工具。
 - 合并 PDF
 - 拆分 PDF
 - Office 转 PDF
+- HTML 转 PDF
 - PDF 转 JPG
+- PDF OCR
 - 图片转 PDF
 - 添加页码
 - 旋转 PDF
@@ -21,7 +23,6 @@ iLovePDF API 的 Python SDK，包含 iLoveAPI 的图片处理工具。
 - PDF 转 PDF/A
 - 校验 PDF/A
 - 提取
-- PDF 签名
 
 每个功能都有对应的参数设置以获得期望结果。
 
@@ -33,7 +34,6 @@ iLovePDF API 的 Python SDK，包含 iLoveAPI 的图片处理工具。
 - 图片格式转换
 - 图片旋转
 - 图片水印
-- 图片修复
 - 图片放大
 - 图片去背景
 
@@ -74,47 +74,15 @@ task.download()
 
 更多示例请参考本仓库的 sample 目录。
 
-### 文档
-
-- `docs/STRUCTURE.md`: 项目结构（PDF 与图片分离）
-- `docs/TEST_STATUS.md`: 最新测试状态
-- `docs/FEATURES.md`: 功能总览（全部工具列表）
-
 ### 示例结构
 
 - `samples/python/pdf`: PDF 处理示例
 - `samples/python/image`: 图片处理示例
-- `samples/python/signature`: 签名 API 示例
 
 ### 源码结构
 
 - `src/ilovepdf/tool/pdf`: PDF 工具实现
 - `src/ilovepdf/tool/image`: 图片工具实现
-
-## 签名工具
-该工具的使用方式与其他工具不同，下面示例展示如何创建签名请求：
-
-```python
-from ilovepdf.tool import Signature
-from ilovepdf.signature import Receiver, SignatureElement
-
-my_task = Signature(pub_key, priv_key)
-file = my_task.add_file("/path/to/file/sample.pdf")
-
-signer = Receiver("signer", "name", "email@email.com")
-
-signature_element = SignatureElement(file)
-signature_element.set_position(x=20, y=-20)
-signature_element.pages = "1"
-signature_element.size = 40
-
-signer.add_element(signature_element)
-my_task.add_receiver(signer)
-response = my_task.send_to_sign()
-body = response.body
-```
-
-更多签名相关示例请参考仓库内的 sample 代码。
 
 ## API 文档
 
@@ -176,7 +144,6 @@ compress_task = Compress(public_key, secret_key)
 图片工具通过 `Iloveimg` 客户端暴露，内部会将易用的工具名映射到正确的 API 工具名
 （例如 `compress` -> `compressimage`，`removebackground` -> `removebackgroundimage`）。
 
-注意：部分图片工具（例如 `repairimage`）可能取决于你的 API 套餐权限。
 如果 API 提示工具不存在，可尝试使用 PDF 的 `repair` 作为替代。
 
 图片缩放示例：
