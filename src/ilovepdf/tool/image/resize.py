@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ..errors import ArgumentEnumError
-from ..task import Task
+from ...errors import ArgumentEnumError
+from ...task import Task
 
 
 class Resize(Task):
@@ -10,6 +10,8 @@ class Resize(Task):
         "pixels_width",
         "pixels_height",
         "percentage",
+        "maintain_ratio",
+        "no_enlarge_if_smaller",
     ]
 
     RESIZE_MODE_VALUES = ["pixels", "percentage"]

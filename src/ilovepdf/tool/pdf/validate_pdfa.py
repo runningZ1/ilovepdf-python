@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ..errors import ArgumentEnumError, UnsupportedFunctionalityError
-from ..task import Task
+from ...errors import ArgumentEnumError, UnsupportedFunctionalityError
+from ...task import Task
 
 
 class ValidatePdfa(Task):

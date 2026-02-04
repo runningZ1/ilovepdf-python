@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ..task import Task
+from ...task import Task
 
 
 class Protect(Task):

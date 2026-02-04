@@ -34,6 +34,8 @@ You can also process images with tools like:
 - Rotate images
 - Watermark images
 - Repair images
+- Upscale images
+- Remove image backgrounds
 
 ## Requirements
 Python 3.8 or greater
@@ -71,6 +73,17 @@ task.download()
 ```
 
 For a more in-depth usage, refer to the sample codes in this repository.
+
+### Samples layout
+
+- `samples/python/pdf`: PDF processing examples
+- `samples/python/image`: Image processing examples
+- `samples/python/signature`: Signature API examples
+
+### Source layout
+
+- `src/ilovepdf/tool/pdf`: PDF tool implementations
+- `src/ilovepdf/tool/image`: Image tool implementations
 
 ## Signature Tool
 The usage of this tool is different than the other tools. The following example shows how to create a signature using the iLovePDF API:
@@ -155,7 +168,11 @@ compress_task = Compress(public_key, secret_key)
 
 ### Image tools
 Image tools are exposed through the `Iloveimg` client, which maps image tool names
-to the correct API tools (for example `compress` -> `compressimage`).
+to the correct API tools (for example `compress` -> `compressimage`,
+`removebackground` -> `removebackgroundimage`).
+
+Note: Some image tools (such as `repairimage`) may depend on your API plan. If the
+API reports the tool does not exist, try the PDF `repair` tool as a fallback.
 
 Example usage for image resize:
 

@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from ..errors import ArgumentError, UnsupportedFunctionalityError
-from ..file import File
-from ..request_payload.form_url_encoded import FormUrlEncoded
-from ..task import Task
-from ..signature.receiver import Receiver
+from ...errors import ArgumentError, UnsupportedFunctionalityError
+from ...file import File
+from ...request_payload.form_url_encoded import FormUrlEncoded
+from ...task import Task
+from ...signature.receiver import Receiver
 
 
 class Signature(Task):

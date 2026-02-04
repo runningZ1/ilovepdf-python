@@ -11,3 +11,9 @@ def test_iloveimg_aliases():
 
     task = client.new_task("watermark", make_start=False)
     assert task.tool == "watermarkimage"
+
+    task = client.new_task("upscale", make_start=False)
+    assert task.tool == "upscaleimage"
+
+    task = client.new_task("removebackground", make_start=False)
+    assert task.tool == "removebackgroundimage"

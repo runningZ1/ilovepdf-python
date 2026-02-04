@@ -1,25 +1,28 @@
-from .compress import Compress
-from .compressimage import Compressimage
-from .convert import Convert
-from .crop import Crop
-from .extract import Extract
-from .imagepdf import Imagepdf
-from .merge import Merge
-from .officepdf import Officepdf
-from .pagenumber import Pagenumber
-from .pdfa import Pdfa
-from .pdfjpg import Pdfjpg
-from .protect import Protect
-from .repair import Repair
-from .resize import Resize
-from .rotate import Rotate
-from .rotateimage import Rotateimage
-from .signature import Signature
-from .split import Split
-from .unlock import Unlock
-from .validate_pdfa import ValidatePdfa
-from .watermark import Watermark
-from .watermarkimage import Watermarkimage
+from .pdf.compress import Compress
+from .image.compressimage import Compressimage
+from .image.convert import Convert
+from .image.crop import Crop
+from .pdf.extract import Extract
+from .pdf.imagepdf import Imagepdf
+from .pdf.merge import Merge
+from .pdf.officepdf import Officepdf
+from .pdf.pagenumber import Pagenumber
+from .pdf.pdfa import Pdfa
+from .pdf.pdfjpg import Pdfjpg
+from .pdf.protect import Protect
+from .pdf.repair import Repair
+from .image.resize import Resize
+from .pdf.rotate import Rotate
+from .image.rotateimage import Rotateimage
+from .image.upscaleimage import Upscaleimage
+from .image.removebackgroundimage import Removebackgroundimage
+from .image.repairimage import Repairimage
+from .pdf.signature import Signature
+from .pdf.split import Split
+from .pdf.unlock import Unlock
+from .pdf.validate_pdfa import ValidatePdfa
+from .pdf.watermark import Watermark
+from .image.watermarkimage import Watermarkimage
 
 TOOL_CLASSES = {
     "Compress": Compress,
@@ -38,6 +41,9 @@ TOOL_CLASSES = {
     "Resize": Resize,
     "Rotate": Rotate,
     "Rotateimage": Rotateimage,
+    "Upscaleimage": Upscaleimage,
+    "Removebackgroundimage": Removebackgroundimage,
+    "Repairimage": Repairimage,
     "Signature": Signature,
     "Split": Split,
     "Unlock": Unlock,

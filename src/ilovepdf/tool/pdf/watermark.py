@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import List
 
-from ..element import Element
-from ..errors import ArgumentEnumError, ArgumentError
-from ..task import Task
+from ...element import Element
+from ...errors import ArgumentEnumError, ArgumentError
+from ...task import Task
 
 
 class Watermark(Task):
