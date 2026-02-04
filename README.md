@@ -2,7 +2,7 @@ iLovePDF Api - Python Library
 ---------------------------
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Python SDK for the iLovePDF API.
+A Python SDK for the iLovePDF API, including image tools from iLoveAPI.
 
 Develop and automate PDF processing tasks like:
 
@@ -24,6 +24,16 @@ Develop and automate PDF processing tasks like:
 - Sign PDF
 
 Each one with several settings to get your desired results.
+
+You can also process images with tools like:
+
+- Resize images
+- Crop images
+- Compress images
+- Convert images
+- Rotate images
+- Watermark images
+- Repair images
 
 ## Requirements
 Python 3.8 or greater
@@ -90,7 +100,7 @@ For a more in-depth usage, refer to all of the signature examples on the sample 
 ## Documentation
 
 ### HTTP API Calls
-All PDF tools have the following methods that contact the iLovePDF API:
+All PDF and image tools have the following methods that contact the iLovePDF API:
 
 | Method                 | Description                                              | Notes                                           |
 | ---------------------- | -------------------------------------------------------- | ----------------------------------------------- |
@@ -141,6 +151,52 @@ To instantiate a Compress tool task directly do:
 from ilovepdf.tool import Compress
 
 compress_task = Compress(public_key, secret_key)
+```
+
+### Image tools
+Image tools are exposed through the `Iloveimg` client, which maps image tool names
+to the correct API tools (for example `compress` -> `compressimage`).
+
+Example usage for image resize:
+
+```python
+from ilovepdf import Iloveimg
+
+iloveimg = Iloveimg(public_key, secret_key)
+task = iloveimg.new_task("resize")
+
+task.add_file("path/to/file.jpg")
+task.resize_mode = "pixels"
+task.pixels_width = 500
+task.pixels_height = 500
+
+task.execute()
+task.download()
+```
+
+Image watermark example:
+
+```python
+from ilovepdf import Iloveimg
+from ilovepdf.element import Element
+
+iloveimg = Iloveimg(public_key, secret_key)
+task = iloveimg.new_task("watermark")
+
+task.add_file("path/to/file.png")
+
+element = Element({
+    "type": "text",
+    "text": "iLoveAPI",
+    "gravity": "Center",
+    "transparency": 50,
+    "width_percent": 30,
+    "height_percent": 10,
+})
+task.add_element(element)
+
+task.execute()
+task.download()
 ```
 
 ### Handling errors

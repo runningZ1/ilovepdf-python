@@ -9,16 +9,20 @@ from ..task import Task
 
 class Watermark(Task):
     API_PARAMS = [
+        "type",
         "mode",
         "text",
         "image",
         "pages",
+        "gravity",
         "vertical_position",
         "horizontal_position",
+        "vertical_adjustment_percent",
+        "horizontal_adjustment_percent",
         "vertical_position_adjustment",
         "horizontal_position_adjustment",
         "mosaic",
-        "rotate",
+        "rotation",
         "font_family",
         "font_style",
         "font_size",
@@ -29,6 +33,20 @@ class Watermark(Task):
     ]
 
     MODE_VALUES = ["image", "text", "multi"]
+    TYPE_VALUES = ["image", "text"]
+    GRAVITY_VALUES = [
+        "North",
+        "NorthEast",
+        "NorthWest",
+        "Center",
+        "CenterEast",
+        "CenterWest",
+        "East",
+        "West",
+        "South",
+        "SouthEast",
+        "SouthWest",
+    ]
 
     def __init__(self, public_key: str, secret_key: str, make_start: bool = True) -> None:
         self.tool = "watermark"
@@ -53,6 +71,32 @@ class Watermark(Task):
         if new_val not in self.MODE_VALUES:
             raise ArgumentEnumError(self.MODE_VALUES)
         self._mode = new_val
+
+    @property
+    def type(self):
+        return getattr(self, "_type", None)
+
+    @type.setter
+    def type(self, new_val: str) -> None:
+        if new_val not in self.TYPE_VALUES:
+            raise ArgumentEnumError(self.TYPE_VALUES)
+        self._type = new_val
+        if getattr(self, "_mode", None) is None:
+            self._mode = new_val
+
+    def _normalize_gravity(self, value: str) -> str:
+        for allowed in self.GRAVITY_VALUES:
+            if value.lower() == allowed.lower():
+                return allowed
+        raise ArgumentEnumError(self.GRAVITY_VALUES)
+
+    @property
+    def gravity(self):
+        return getattr(self, "_gravity", None)
+
+    @gravity.setter
+    def gravity(self, new_val: str) -> None:
+        self._gravity = self._normalize_gravity(new_val)
 
     @property
     def vertical_position(self):
@@ -93,6 +137,24 @@ class Watermark(Task):
         if new_val not in Element.LAYER_VALUES:
             raise ArgumentEnumError(Element.LAYER_VALUES)
         self._layer = new_val
+
+    @property
+    def rotation(self):
+        return getattr(self, "_rotation", None)
+
+    @rotation.setter
+    def rotation(self, new_val: int) -> None:
+        if not isinstance(new_val, int) or not (0 <= new_val <= 360):
+            raise ArgumentError("Rotation must be an integer between 0 and 360")
+        self._rotation = new_val
+
+    @property
+    def rotate(self):
+        return self.rotation
+
+    @rotate.setter
+    def rotate(self, new_val: int) -> None:
+        self.rotation = new_val
 
     def extract_api_params(self):
         params = super().extract_api_params()

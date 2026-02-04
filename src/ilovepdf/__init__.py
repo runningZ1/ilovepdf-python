@@ -1,5 +1,6 @@
 from .version import __version__
 from .ilovepdf import Ilovepdf
+from .iloveimg import Iloveimg
 from .task import Task
 from .file import File
 from .signature_file import SignatureFile
@@ -24,6 +25,7 @@ from . import extra_upload_params
 
 __all__ = [
     "Ilovepdf",
+    "Iloveimg",
     "Task",
     "File",
     "SignatureFile",
