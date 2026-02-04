@@ -1,31 +1,30 @@
-Project Structure
-=================
+项目结构
+========
 
-This repository separates PDF and Image functionality so users can locate tools
-and examples quickly by folder and filename.
+本仓库将 PDF 与图片功能分开，使用者可以通过目录与文件名快速定位工具与示例。
 
-Source Code
------------
+源代码
+------
 
-- `src/ilovepdf/tool/pdf`: PDF tool implementations
-  - `compress.py`, `merge.py`, `split.py`, `repair.py`, `watermark.py`, ...
-- `src/ilovepdf/tool/image`: Image tool implementations
-  - `resize.py`, `crop.py`, `convert.py`, `compressimage.py`, `upscaleimage.py`, ...
+- `src/ilovepdf/tool/pdf`: PDF 工具实现
+  - `compress.py`、`merge.py`、`split.py`、`repair.py`、`watermark.py` 等
+- `src/ilovepdf/tool/image`: 图片工具实现
+  - `resize.py`、`crop.py`、`convert.py`、`compressimage.py`、`upscaleimage.py` 等
 
-Public Clients
---------------
+公开客户端
+----------
 
-- `src/ilovepdf/ilovepdf.py`: PDF API client
-- `src/ilovepdf/iloveimg.py`: Image API client (maps friendly tool names to `*image`)
+- `src/ilovepdf/ilovepdf.py`: PDF API 客户端
+- `src/ilovepdf/iloveimg.py`: 图片 API 客户端（将易用的工具名映射到 `*image`）
 
-Samples
--------
+示例
+----
 
-- `samples/python/pdf`: PDF processing examples
-- `samples/python/image`: Image processing examples
-- `samples/python/signature`: Signature API examples
+- `samples/python/pdf`: PDF 处理示例
+- `samples/python/image`: 图片处理示例
+- `samples/python/signature`: 签名 API 示例
 
-Tests
------
+测试
+----
 
-- `tests`: Lightweight unit tests for request encoding and client mappings
+- `tests`: 轻量单元测试（请求编码与客户端映射）

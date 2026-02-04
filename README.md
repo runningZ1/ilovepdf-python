@@ -1,55 +1,55 @@
-iLovePDF Api - Python Library
----------------------------
+iLovePDF API - Python 库
+-----------------------
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Python SDK for the iLovePDF API, including image tools from iLoveAPI.
+iLovePDF API 的 Python SDK，包含 iLoveAPI 的图片处理工具。
 
-Develop and automate PDF processing tasks like:
+可用于开发并自动化以下 PDF 处理任务：
 
-- Compress PDF
-- Merge PDF
-- Split PDF
-- Convert Office to PDF
-- PDF to JPG
-- Images to PDF
-- Add Page Numbers
-- Rotate PDF
-- Unlock PDF
-- Protect PDF
-- Stamp a Watermark
-- Repair PDF
-- PDF to PDF/A
-- Validate PDF/A
-- Extract
-- Sign PDF
+- 压缩 PDF
+- 合并 PDF
+- 拆分 PDF
+- Office 转 PDF
+- PDF 转 JPG
+- 图片转 PDF
+- 添加页码
+- 旋转 PDF
+- 解锁 PDF
+- 加密 PDF
+- 添加水印
+- 修复 PDF
+- PDF 转 PDF/A
+- 校验 PDF/A
+- 提取
+- PDF 签名
 
-Each one with several settings to get your desired results.
+每个功能都有对应的参数设置以获得期望结果。
 
-You can also process images with tools like:
+同样支持图片处理功能，例如：
 
-- Resize images
-- Crop images
-- Compress images
-- Convert images
-- Rotate images
-- Watermark images
-- Repair images
-- Upscale images
-- Remove image backgrounds
+- 图片缩放
+- 图片裁剪
+- 图片压缩
+- 图片格式转换
+- 图片旋转
+- 图片水印
+- 图片修复
+- 图片放大
+- 图片去背景
 
-## Requirements
-Python 3.8 or greater
+## 环境要求
+Python 3.8 或更高版本
 
-## Installation
+## 安装
 
 ```bash
 pip install ilovepdf-python
 ```
 
-## Usage
+## 使用方法
 
-### Getting started
-The quickest way to get started is to first get a set of API keys and run the following code snippet:
+### 快速开始
+最快的方式是先获取 API Key，然后运行下面的代码示例：
 
 ```python
 from ilovepdf import Ilovepdf
@@ -59,39 +59,39 @@ private_key = "YOUR_PRIVATE_KEY"
 
 ilovepdf = Ilovepdf(public_key, private_key)
 
-# Create a task with the tool you want to use:
+# 创建一个任务并指定所需工具：
 task = ilovepdf.new_task("compress")
 
-# Add the files you want to upload...
+# 添加需要上传的文件...
 file1 = task.add_file("my_disk/my_example1.pdf")
 file2 = task.add_file("my_disk/my_example2.pdf")
 file3 = task.add_file_from_url("http://URL_TO_PDF")
 
-# Once you are done uploading your files:
+# 上传完成后执行任务：
 task.execute()
 task.download()
 ```
 
-For a more in-depth usage, refer to the sample codes in this repository.
+更多示例请参考本仓库的 sample 目录。
 
-### Documentation
+### 文档
 
-- `docs/STRUCTURE.md`: Project layout (PDF vs Image separation)
-- `docs/TEST_STATUS.md`: Latest manual test status
+- `docs/STRUCTURE.md`: 项目结构（PDF 与图片分离）
+- `docs/TEST_STATUS.md`: 最新测试状态
 
-### Samples layout
+### 示例结构
 
-- `samples/python/pdf`: PDF processing examples
-- `samples/python/image`: Image processing examples
-- `samples/python/signature`: Signature API examples
+- `samples/python/pdf`: PDF 处理示例
+- `samples/python/image`: 图片处理示例
+- `samples/python/signature`: 签名 API 示例
 
-### Source layout
+### 源码结构
 
-- `src/ilovepdf/tool/pdf`: PDF tool implementations
-- `src/ilovepdf/tool/image`: Image tool implementations
+- `src/ilovepdf/tool/pdf`: PDF 工具实现
+- `src/ilovepdf/tool/image`: 图片工具实现
 
-## Signature Tool
-The usage of this tool is different than the other tools. The following example shows how to create a signature using the iLovePDF API:
+## 签名工具
+该工具的使用方式与其他工具不同，下面示例展示如何创建签名请求：
 
 ```python
 from ilovepdf.tool import Signature
@@ -113,24 +113,24 @@ response = my_task.send_to_sign()
 body = response.body
 ```
 
-For a more in-depth usage, refer to all of the signature examples on the sample codes in this repository.
+更多签名相关示例请参考仓库内的 sample 代码。
 
-## Documentation
+## API 文档
 
-### HTTP API Calls
-All PDF and image tools have the following methods that contact the iLovePDF API:
+### HTTP API 调用
+所有 PDF 与图片工具都支持以下方法与 iLovePDF API 交互：
 
-| Method                 | Description                                              | Notes                                           |
+| 方法                   | 说明                                                     | 备注                                            |
 | ---------------------- | -------------------------------------------------------- | ----------------------------------------------- |
-| add_file(file)         | Uploads a file to iLovePDF servers                       | Returns File                                    |
-| add_file_from_url(url) | Uploads a file to iLovePDF servers using a URL           | Returns File                                    |
-| delete_file(file)      | Deletes a file from iLovePDF                             | Returns boolean                                 |
-| download(path)         | Downloads the processed file                             | Returns boolean; no need to specify a filepath  |
-| status()               | Retrieves the current status of the task being processed | Returns Response                                |
-| execute()              | Sends a request to iLovePDF to begin processing the PDFs | Returns Response                                |
-| delete()               | Deletes the task                                         | Returns Response                                |
+| add_file(file)         | 上传文件到 iLovePDF 服务器                               | 返回 File                                       |
+| add_file_from_url(url) | 通过 URL 上传文件到 iLovePDF 服务器                      | 返回 File                                       |
+| delete_file(file)      | 删除 iLovePDF 服务器上的文件                             | 返回 boolean                                    |
+| download(path)         | 下载处理后的文件                                         | 返回 boolean；无需指定完整文件路径              |
+| status()               | 获取当前任务的处理状态                                   | 返回 Response                                   |
+| execute()              | 发送处理请求开始任务                                     | 返回 Response                                   |
+| delete()               | 删除任务                                                 | 返回 Response                                   |
 
-Example:
+示例：
 ```python
 from ilovepdf.tool import Imagepdf
 
@@ -138,23 +138,23 @@ imagepdf_task = Imagepdf(public_key, secret_key)
 http_response = imagepdf_task.execute()
 print(http_response.body)
 if imagepdf_task.download():
-    print("Your file was downloaded successfully!")
+    print("文件下载成功！")
 ```
 
-### Methods common to all tools
+### 所有工具通用方法
 
-| Method                               | Description                                                                                 | Notes                                        |
-| ------------------------------------ | ------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| enable_file_encryption(enable, key)  | The key will be used to decrypt the files before processing and re-encrypt them after      | If no key provided, a random key is assigned |
-| assign_meta_value(key, value)        | Assigns metadata values for output files                                                    |                                              |
-| ignore_errors                        | If true, ignores errors on processing                                                       | Default: true                                |
-| ignore_password                      | If true, ignores password-protected files                                                   | Default: true                                |
-| try_pdf_repair                       | If true, try to repair a PDF when processing fails                                          | Default: true                                |
-| packaged_filename                    | Specify filename of the compressed file when multiple files are downloaded                  |                                              |
-| output_filename                      | Set the final name of the processed file                                                    |                                              |
+| 方法                                 | 说明                                                                                         | 备注                                         |
+| ------------------------------------ | -------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| enable_file_encryption(enable, key)  | 处理前使用该 key 解密文件，处理后再加密回去                                                  | 若不提供 key，会自动生成随机 key             |
+| assign_meta_value(key, value)        | 为输出文件设置元数据                                                                        |                                              |
+| ignore_errors                        | 设为 true 时，处理时忽略错误                                                                 | 默认：true                                   |
+| ignore_password                      | 设为 true 时，忽略带密码文件                                                                 | 默认：true                                   |
+| try_pdf_repair                       | 设为 true 时，处理失败会尝试修复 PDF                                                         | 默认：true                                   |
+| packaged_filename                    | 多文件下载时设置压缩包文件名                                                                 |                                              |
+| output_filename                      | 设置最终输出文件名                                                                          |                                              |
 
-### Tool attributes
-All tools have specific attributes you can access and modify. For example for the Image to PDF tool:
+### 工具属性
+每个工具都有对应的可配置属性。例如图片转 PDF 工具：
 
 ```python
 from ilovepdf.tool import Imagepdf
@@ -163,7 +163,7 @@ print(Imagepdf.API_PARAMS)
 # -> ["orientation", "margin", "pagesize", "merge_after"]
 ```
 
-To instantiate a Compress tool task directly do:
+直接实例化 Compress 工具示例：
 
 ```python
 from ilovepdf.tool import Compress
@@ -171,15 +171,14 @@ from ilovepdf.tool import Compress
 compress_task = Compress(public_key, secret_key)
 ```
 
-### Image tools
-Image tools are exposed through the `Iloveimg` client, which maps image tool names
-to the correct API tools (for example `compress` -> `compressimage`,
-`removebackground` -> `removebackgroundimage`).
+### 图片工具
+图片工具通过 `Iloveimg` 客户端暴露，内部会将易用的工具名映射到正确的 API 工具名
+（例如 `compress` -> `compressimage`，`removebackground` -> `removebackgroundimage`）。
 
-Note: Some image tools (such as `repairimage`) may depend on your API plan. If the
-API reports the tool does not exist, try the PDF `repair` tool as a fallback.
+注意：部分图片工具（例如 `repairimage`）可能取决于你的 API 套餐权限。
+如果 API 提示工具不存在，可尝试使用 PDF 的 `repair` 作为替代。
 
-Example usage for image resize:
+图片缩放示例：
 
 ```python
 from ilovepdf import Iloveimg
@@ -196,7 +195,7 @@ task.execute()
 task.download()
 ```
 
-Image watermark example:
+图片水印示例：
 
 ```python
 from ilovepdf import Iloveimg
@@ -221,9 +220,9 @@ task.execute()
 task.download()
 ```
 
-### Handling errors
+### 错误处理
 
-Whenever there is an API Error in one of the endpoints, you can try to capture it the following way:
+当某个接口出现 API 错误时，可以用下面方式捕获：
 
 ```python
 from ilovepdf import ApiError
@@ -231,14 +230,14 @@ from ilovepdf.tool import Compress
 
 try:
     compress_task = Compress(public_key, secret_key)
-    compress_task.execute()  # This raises an error if you forgot to upload a file
+    compress_task.execute()  # 若未上传文件会抛出错误
     compress_task.download()
 except ApiError as exc:
     print(exc.http_response.body)
 ```
 
-Please see https://developer.ilovepdf.com/docs for up-to-date documentation.
+更多最新文档请参考 https://developer.ilovepdf.com/docs 。
 
-## License
+## 许可证
 
-The library is available as open source under the terms of the MIT License.
+本库基于 MIT License 开源。

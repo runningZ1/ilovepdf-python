@@ -1,31 +1,31 @@
-Test Status
-===========
+测试状态
+========
 
-Last updated: 2026-02-04
+最后更新：2026-02-04
 
-Image Tools (local API smoke test)
-----------------------------------
+图片工具（本地 API 烟测）
+-------------------------
 
-Inputs:
+输入文件：
 - `D:\Download\Gemini_Generated_Image_h9jit1h9jit1h9ji(1).png`
 - `D:\Download\4152392682ab38fb1294bfc5a3c73da2.png`
 - `D:\Download\1月8日-视频封面.png`
 
-Results:
-- PASS: `compress`, `resize`, `crop`, `convert`, `rotate`, `watermark`, `repair`,
-  `upscale`, `removebackground`
+结果：
+- 通过：`compress`、`resize`、`crop`、`convert`、`rotate`、`watermark`、`repair`、
+  `upscale`、`removebackground`
 
-Notes:
-- `repairimage` can be restricted by API plan. If your plan does not allow it,
-  use the PDF `repair` tool as fallback.
+说明：
+- `repairimage` 可能受 API 计划限制，如果提示工具不存在，可使用 PDF 的 `repair`
+  作为替代。
 
-PDF Tools
----------
+PDF 工具
+--------
 
-Not re-tested after the codebase was reorganized into `tool/pdf` and `tool/image`.
-Previously known results (before the reorg):
-- PASS: `compress`, `merge`, `split`, `pdfa`, `validatepdfa`, `rotate`, `repair`,
-  `protect`, `watermark`, `pagenumber`, `pdfjpg`, `extract`
-- SKIP: `imagepdf` (needs images), `officepdf` (needs Office file),
-  `unlock` (needs password-protected PDF)
-- FAIL: `signature` (insufficient signature credits on API plan)
+代码结构拆分为 `tool/pdf` 与 `tool/image` 之后，尚未重新回归测试。
+之前的已知结果（拆分前）：
+- 通过：`compress`、`merge`、`split`、`pdfa`、`validatepdfa`、`rotate`、`repair`、
+  `protect`、`watermark`、`pagenumber`、`pdfjpg`、`extract`
+- 跳过：`imagepdf`（需要图片输入）、`officepdf`（需要 Office 文档）、
+  `unlock`（需要带密码的 PDF）
+- 失败：`signature`（API 计划签名额度不足）
