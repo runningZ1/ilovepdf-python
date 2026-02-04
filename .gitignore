@@ -11,3 +11,6 @@ venv/
 
 # Misc
 *.log
+# Local secrets (do not commit)
+.env
+outputs/

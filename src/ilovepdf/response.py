@@ -14,7 +14,7 @@ class Response:
 
     @property
     def headers(self) -> dict:
-        return dict(self.response.headers)
+        return self.response.headers
 
     @property
     def body(self) -> Any:
