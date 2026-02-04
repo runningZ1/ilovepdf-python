@@ -74,6 +74,11 @@ task.download()
 
 For a more in-depth usage, refer to the sample codes in this repository.
 
+### Documentation
+
+- `docs/STRUCTURE.md`: Project layout (PDF vs Image separation)
+- `docs/TEST_STATUS.md`: Latest manual test status
+
 ### Samples layout
 
 - `samples/python/pdf`: PDF processing examples
