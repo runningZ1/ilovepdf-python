@@ -24,6 +24,10 @@ Repository = "https://github.com/runningZ1/ilovepdf-python"
 [project.optional-dependencies]
 test = ["pytest>=7.4"]
 
+[project.scripts]
+ilovepdf = "ilovepdf.cli:main"
+iloveimg = "ilovepdf.cli:main"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 

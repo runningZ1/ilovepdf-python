@@ -74,6 +74,29 @@ task.download()
 
 更多示例可直接参考下面的使用片段（仓库不再保留额外示例文件）。
 
+## CLI 命令行
+安装后可直接使用 `ilovepdf` / `iloveimg` 命令：
+
+```bash
+# PDF 压缩
+ilovepdf pdf compress --file ./input.pdf --output-dir ./out
+
+# 图片缩放
+ilovepdf img resize --file ./input.png --param resize_mode=pixels --param pixels_width=800 --param pixels_height=600 --output-dir ./out
+
+# 使用 .env 文件读取密钥
+ilovepdf pdf merge --file a.pdf --file b.pdf --env-file ./.env --output-dir ./out
+```
+
+可用参数：
+- `--public-key` / `--secret-key`：API 密钥
+- `--env-file`：读取环境变量文件（包含 `ILOVEPDF_PUBLIC_KEY` / `ILOVEPDF_SECRET_KEY`）
+- `--param key=value`：工具参数（可重复）
+- `--params-json path.json`：从 JSON 文件读取全部参数
+- `--no-download`：仅处理不下载
+- `--timeout` / `--long-timeout`：超时时间（秒）
+- `--json`：输出 JSON 结果
+
 ### 源码结构
 
 - `src/ilovepdf`: PDF 模块（含通用基础能力）
