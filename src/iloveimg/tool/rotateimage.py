@@ -1,16 +1,11 @@
 from __future__ import annotations
 
-from ...task import Task
+from ilovepdf.task import Task
 
 
-class Crop(Task):
-    API_PARAMS = [
-        "x",
-        "y",
-        "width",
-        "height",
-    ]
+class Rotateimage(Task):
+    API_PARAMS = []
 
     def __init__(self, public_key: str, secret_key: str, make_start: bool = True) -> None:
-        self.tool = "cropimage"
+        self.tool = "rotateimage"
         super().__init__(public_key, secret_key, make_start)

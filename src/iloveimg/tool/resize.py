@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ...errors import ArgumentEnumError
-from ...task import Task
+from ilovepdf.errors import ArgumentEnumError
+from ilovepdf.task import Task
 
 
 class Resize(Task):

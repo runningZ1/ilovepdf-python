@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ...task import Task
+from ilovepdf.task import Task
 
 
 class Removebackgroundimage(Task):

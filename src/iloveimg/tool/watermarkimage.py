@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ...task import Task
-from ..pdf.watermark import Watermark
+from ilovepdf.task import Task
+from ilovepdf.tool.pdf.watermark import Watermark
 
 
 class Watermarkimage(Watermark):

@@ -72,17 +72,14 @@ task.execute()
 task.download()
 ```
 
-更多示例请参考本仓库的 sample 目录。
-
-### 示例结构
-
-- `samples/python/pdf`: PDF 处理示例
-- `samples/python/image`: 图片处理示例
+更多示例可直接参考下面的使用片段（仓库不再保留额外示例文件）。
 
 ### 源码结构
 
+- `src/ilovepdf`: PDF 模块（含通用基础能力）
 - `src/ilovepdf/tool/pdf`: PDF 工具实现
-- `src/ilovepdf/tool/image`: 图片工具实现
+- `src/iloveimg`: 图片模块
+- `src/iloveimg/tool`: 图片工具实现
 
 ## API 文档
 
@@ -149,7 +146,7 @@ compress_task = Compress(public_key, secret_key)
 图片缩放示例：
 
 ```python
-from ilovepdf import Iloveimg
+from iloveimg import Iloveimg
 
 iloveimg = Iloveimg(public_key, secret_key)
 task = iloveimg.new_task("resize")
@@ -166,7 +163,7 @@ task.download()
 图片水印示例：
 
 ```python
-from ilovepdf import Iloveimg
+from iloveimg import Iloveimg
 from ilovepdf.element import Element
 
 iloveimg = Iloveimg(public_key, secret_key)

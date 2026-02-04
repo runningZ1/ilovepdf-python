@@ -1,11 +1,15 @@
 from __future__ import annotations
 
-from ...task import Task
+from ilovepdf.task import Task
 
 
-class Rotateimage(Task):
-    API_PARAMS = []
+class Convert(Task):
+    API_PARAMS = [
+        "to",
+        "gif_time",
+        "gif_loop",
+    ]
 
     def __init__(self, public_key: str, secret_key: str, make_start: bool = True) -> None:
-        self.tool = "rotateimage"
+        self.tool = "convertimage"
         super().__init__(public_key, secret_key, make_start)
