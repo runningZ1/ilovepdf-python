@@ -61,7 +61,7 @@ Get your API keys, then run the following example:
 from ilovepdf import Ilovepdf
 
 public_key = "YOUR_PUBLIC_KEY"
-secret_key = "YOUR_PRIVATE_KEY"
+secret_key = "YOUR_SECRET_KEY"
 
 ilovepdf = Ilovepdf(public_key, secret_key)
 
