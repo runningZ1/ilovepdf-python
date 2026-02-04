@@ -4,6 +4,7 @@ from _config import PUBLIC_KEY, SECRET_KEY
 
 watermark_task = Watermark(PUBLIC_KEY, SECRET_KEY)
 watermark_task.add_file("/path/to/file.pdf")
+watermark_task.mode = "multi"
 
 watermark = Element({
     "type": "text",
