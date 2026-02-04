@@ -12,3 +12,14 @@
 .rspec_status
 Gemfile.lock
 .byebug_history
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.venv/
+venv/
