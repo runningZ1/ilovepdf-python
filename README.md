@@ -78,6 +78,7 @@ task.download()
 
 - `docs/STRUCTURE.md`: 项目结构（PDF 与图片分离）
 - `docs/TEST_STATUS.md`: 最新测试状态
+- `docs/FEATURES.md`: 功能总览（全部工具列表）
 
 ### 示例结构
 
